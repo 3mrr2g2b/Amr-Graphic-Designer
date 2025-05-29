@@ -1409,6 +1409,7 @@ document.querySelector('.contact-form form').addEventListener('submit', function
     emailjs.sendForm('service_cl6mk14', 'template_pie6hj9', this)
         .then(function() {
             alert('Message sent successfully!');
+            form.reset(); // Reset the form after successful submission
         }, function(error) {
             alert('Failed to send message. Please try again.');
         });
