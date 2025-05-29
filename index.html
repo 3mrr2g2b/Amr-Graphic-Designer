@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> عمرو رجب - مصمم جرافيك</title>
+    <title>Amr Ragab - Graphic Designer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;700&family=Tajawal:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <style>
         /* CSS Reset */
         * {
@@ -15,24 +17,24 @@
             box-sizing: border-box;
         }
 
-        /* المتغيرات */
+        /* Variables */
         :root {
-            --primary-color: #e63946; /* أحمر دافئ */
-            --secondary-color: #457b9d; /* أزرق هادئ */
-            --accent-color: #f1c40f; /* أصفر طبيعي */
+            --primary-color: #e63946; /* Warm Red */
+            --secondary-color: #457b9d; /* Calm Blue */
+            --accent-color: #f1c40f; /* Natural Yellow */
             --dark-color: #2d3436;
             --light-color: #f7f9fb;
             --text-color: #2d3436;
             --transition: all 0.3s ease;
         }
 
-        /* الأساسيات */
+        /* Basics */
         body {
-            font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
             background-color: #fff;
             color: var(--text-color);
             line-height: 1.8;
-            direction: rtl;
+            direction: ltr; /* Changed to LTR */
             overflow-x: hidden;
         }
 
@@ -88,7 +90,7 @@
             padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
-            font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
             font-weight: 500;
             font-size: 15px;
             transition: var(--transition);
@@ -103,11 +105,11 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* شريط التنقل */
+        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
-            right: 0;
+            left: 0; /* Changed from right to left */
             width: 100%;
             background: #ffffff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -154,8 +156,8 @@
         .nav-links li a {
             color: var(--dark-color);
             text-decoration: none;
-            margin-left: 30px;
-            font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
+            margin-right: 30px; /* Changed from margin-left */
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
             font-weight: 500;
             font-size: 15px;
             transition: var(--transition);
@@ -179,28 +181,42 @@
             color: var(--primary-color);
         }
 
-        /* قسم الرئيسية */
+        /* Home Section */
         .home-section {
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding-top: 80px;
-            background: var(--light-color);
+            position: relative; /* Needed for overlay */
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .home-content {
             flex: 1;
-            padding-left: 15px;
+            padding-right: 15px; /* Changed from padding-left */
+            position: relative; /* To ensure content is above overlay */
+            z-index: 2;
+            color: var(--light-color); /* Adjust text color for background image */
         }
 
         .home-content h1 {
-            font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
-            font-size: 48px;
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
+            font-size: 30px;
             font-weight: 700;
             margin-bottom: 20px;
-            color: var(--dark-color);
+             color: var(--dark-color); /* Color will be inherited or set to light for better contrast */
             opacity: 0;
-            animation: fadeInLeft 0.6s ease-out 0.2s forwards;
+            animation: fadeInRight 0.6s ease-out 0.2s forwards; /* Changed from fadeInLeft */
         }
 
         .home-content h1 span {
@@ -210,10 +226,10 @@
         .home-content p {
             font-size: 18px;
             margin-bottom: 30px;
-            color: #636e72;
+            /* color: #636e72; */ /* Color will be inherited or set to light */
             font-weight: 400;
             opacity: 0;
-            animation: fadeInLeft 0.6s ease-out 0.4s forwards;
+            animation: fadeInRight 0.6s ease-out 0.4s forwards; /* Changed from fadeInLeft */
         }
 
         .home-content .btn {
@@ -221,9 +237,10 @@
             animation: fadeInUp 0.6s ease-out 0.6s forwards;
         }
 
-        .home-image {
+        .home-image { /* This can be removed if the background image serves its purpose */
             flex: 1;
-            text-align: left;
+            text-align: right; /* Changed from left */
+            display: none; /* Hide if using full background image, or adjust as needed */
         }
 
         .home-image img {
@@ -235,7 +252,13 @@
             animation: zoomIn 0.6s ease-out 0.8s forwards;
         }
 
-        /* قسم عني */
+        /* Removed video background styles as we are using an image now */
+        /* .video-bg { ... } */
+        /* #home { ... } */
+        /* .hero { ... } */
+
+
+        /* About Section */
         .about-section {
             background-color: #fff;
         }
@@ -249,7 +272,7 @@
         .about-image {
             flex: 1;
             opacity: 0;
-            transform: translateX(-30px);
+            transform: translateX(30px); /* Adjusted for LTR */
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
@@ -261,13 +284,12 @@
         .about-image img {
             width: 100%;
             border-radius: 10px;
-           
         }
 
         .about-info {
             flex: 1;
             opacity: 0;
-            transform: translateX(30px);
+            transform: translateX(-30px); /* Adjusted for LTR */
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
@@ -277,7 +299,7 @@
         }
 
         .about-info h3 {
-            font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
             font-size: 28px;
             font-weight: 600;
             margin-bottom: 20px;
@@ -377,7 +399,7 @@
             background: var(--primary-color);
             border-radius: 3px;
             transform: scaleX(0);
-            transform-origin: right;
+            transform-origin: left; /* Changed from right */
             transition: transform 0.5s ease-out;
         }
 
@@ -385,7 +407,7 @@
             transform: scaleX(1);
         }
 
-        /* قسم الأعمال */
+        /* Portfolio Section */
         .portfolio-section {
             background: #fff;
         }
@@ -405,7 +427,7 @@
             margin: 5px;
             cursor: pointer;
             color: var(--text-color);
-            font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
             font-weight: 500;
             font-size: 14px;
             border-radius: 30px;
@@ -418,32 +440,58 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+        /* Styles for Slick Slider */
+        .portfolio-slider .slick-slide {
+            margin: 0 10px; /* Adjust spacing between slides */
         }
+
+        .portfolio-slider .slick-dots li button:before {
+            font-size: 12px;
+            color: var(--primary-color);
+        }
+        .portfolio-slider .slick-dots li.slick-active button:before {
+            color: var(--secondary-color);
+        }
+
+        .portfolio-slider .slick-prev,
+        .portfolio-slider .slick-next {
+            z-index: 1;
+        }
+        .portfolio-slider .slick-prev:before,
+        .portfolio-slider .slick-next:before {
+            color: var(--primary-color); /* Arrow color */
+            font-size: 24px;
+        }
+         .portfolio-slider .slick-prev {
+            left: -35px; /* Adjust position */
+        }
+        .portfolio-slider .slick-next {
+            right: -35px; /* Adjust position */
+        }
+
 
         .portfolio-item {
             position: relative;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: scale(0.98);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            opacity: 1; /* Keep items visible for slider */
+            transform: scale(1); /* Keep items visible for slider */
+            /* transition: opacity 0.5s ease-out, transform 0.5s ease-out; */ /* Remove if slider handles transitions */
+            margin-bottom: 20px; /* Add some bottom margin if needed */
         }
 
-        .portfolio-item.visible {
+        /* .portfolio-item.visible {
             opacity: 1;
             transform: scale(1);
-        }
+        } */
 
         .portfolio-item img {
             width: 100%;
             height: 250px;
             object-fit: cover;
             transition: transform 0.4s ease;
+            display: block; /* Ensure img is block for slider */
         }
 
         .portfolio-item:hover img {
@@ -462,6 +510,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center; /* Center content */
+            text-align: center; /* Center text */
             opacity: 0;
             transition: opacity 0.3s ease-out;
         }
@@ -472,7 +522,7 @@
 
         .portfolio-overlay h3 {
             margin-bottom: 10px;
-            font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
             font-size: 20px;
             font-weight: 600;
         }
@@ -493,7 +543,7 @@
             color: var(--primary-color);
         }
 
-        /* قسم الاتصال */
+        /* Contact Section */
         .contact-section {
             background-color: var(--light-color);
         }
@@ -516,7 +566,7 @@
         }
 
         .contact-info h3 {
-            font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
             font-size: 26px;
             font-weight: 600;
             margin-bottom: 20px;
@@ -535,7 +585,7 @@
             align-items: center;
             margin-bottom: 20px;
             opacity: 0;
-            transform: translateX(30px);
+            transform: translateX(-30px); /* Adjusted for LTR */
             transition: opacity 0.4s ease-out, transform 0.4s ease-out;
         }
 
@@ -551,16 +601,18 @@
         .contact-details i {
             width: 40px;
             height: 40px;
-            background: var(--light-color);
+            background: var(--light-color); /* Corrected from --light-color to #fff or similar if on light bg */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 15px;
-            margin-top: -20px;
+            margin-right: 15px; /* Changed from margin-left */
+            margin-left: 0; /* Reset margin-left */
+            margin-top: 0; /* Adjusted margin-top */
             color: var(--primary-color);
             font-size: 18px;
             transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .contact-details div:hover i {
@@ -599,7 +651,7 @@
             margin-bottom: 15px;
             border: 1px solid #dfe6e9;
             border-radius: 6px;
-            font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
             font-size: 15px;
             font-weight: 400;
             transition: var(--transition);
@@ -621,7 +673,7 @@
             width: 100%;
         }
 
-        /* التذييل */
+        /* Footer */
         footer {
             background: var(--dark-color);
             color: white;
@@ -659,7 +711,7 @@
             font-weight: 400;
         }
 
-        /* التصميم المتجاوب */
+        /* Responsive Design */
         @media (max-width: 992px) {
             .about-content,
             .contact-content {
@@ -671,6 +723,9 @@
             .about-info {
                 text-align: center;
             }
+             .home-content {
+                padding-right: 0; /* Reset padding for centered text */
+            }
 
             .personal-info {
                 grid-template-columns: 1fr;
@@ -681,32 +736,45 @@
                 text-align: center;
                 padding-bottom: 60px;
             }
-
-            .home-image {
-                margin-top: 30px;
+            .portfolio-slider .slick-prev {
+                left: 10px;
+            }
+            .portfolio-slider .slick-next {
+                right: 10px;
             }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                right: 0;
-                width: 100%;
-                background: #fff;
-                flex-direction: column;
-                padding: 15px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                z-index: 999;
-            }
+            @media (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 15px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+    }
 
-            .nav-links.active {
-                display: flex;
-            }
+    .nav-links.active {
+        max-height: 500px; /* Large enough for all links */
+        opacity: 1;
+        pointer-events: auto;
+        transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+    }
+}
 
             .nav-links li {
                 margin: 10px 0;
+                text-align: center; /* Center nav links in mobile */
                 animation: none;
                 opacity: 1;
             }
@@ -737,12 +805,16 @@
                 font-size: 28px;
             }
 
-            .portfolio-grid {
+            /* .portfolio-grid {
                 grid-template-columns: 1fr;
-            }
+            } */ /* Removed as slider handles layout */
 
             .portfolio-item img {
                 height: 200px;
+            }
+             .portfolio-slider .slick-prev,
+            .portfolio-slider .slick-next {
+                display: none !important; /* Hide arrows on smaller screens if desired, dots can be used */
             }
         }
 
@@ -792,147 +864,158 @@
             .contact-info h3 {
                 font-size: 22px;
             }
-            section {
-    padding: 50px;
-    margin: 20px auto;
-    max-width: 900px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+            /* section {
+                padding: 50px;
+                margin: 20px auto;
+                max-width: 900px;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            } */ /* This was conflicting, removed */
 
-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-}
+            /* img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                display: block;
+                margin: 0 auto;
+            } */ /* This was too general, removed */
 
-form input, form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+            /* form input, form textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            } */ /* Handled by .contact-form styles */
 
-form button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+            /* form button {
+                padding: 10px 20px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            } */ /* Handled by .btn styles */
 
-.portfolio-filter {
-    text-align: center;
-    margin-bottom: 20px;
-}
+            /* .portfolio-filter {
+                text-align: center;
+                margin-bottom: 20px;
+            } */ /* Handled by existing .portfolio-filter styles */
 
-.filter-btn {
-    background: #f0f0f0;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 4px;
-}
+            /* .filter-btn {
+                background: #f0f0f0;
+                border: none;
+                padding: 10px 20px;
+                margin: 5px;
+                cursor: pointer;
+                border-radius: 4px;
+            } */ /* Handled by existing .filter-btn styles */
 
-.filter-btn.active {
-    background: #007BFF;
-    color: white;
-}
+            /* .filter-btn.active {
+                background: #007BFF;
+                color: white;
+            } */ /* Handled by existing .filter-btn styles */
 
-.slider-container {
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-}
+            /* .slider-container {
+                position: relative;
+                overflow: hidden;
+                max-width: 100%;
+            } */ /* Replaced by Slick slider */
 
-.slider {
-    display: flex;
-    transition: transform 0.5s ease;
-}
+            /* .slider {
+                display: flex;
+                transition: transform 0.5s ease;
+            } */ /* Replaced by Slick slider */
 
-.slide {
-    flex: 0 0 100%;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
+            /* .slide {
+                flex: 0 0 100%;
+                text-align: center;
+                padding: 20px;
+                box-sizing: border-box;
+            } */ /* Replaced by Slick slider */
 
-.slide img {
-    width: 100%;
-    height: auto;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
-}
+            /* .slide img {
+                width: 100%;
+                height: auto;
+                max-height: 300px;
+                object-fit: cover;
+                border-radius: 8px;
+            } */ /* Replaced by Slick slider */
 
-.prev-btn, .next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 4px;
-}
+            /* .prev-btn, .next-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                font-size: 24px;
+                border-radius: 4px;
+            } */ /* Replaced by Slick slider */
 
-.prev-btn {
-    right: 10px;
-}
+            /* .prev-btn {
+                right: 10px;
+            } */ /* Replaced by Slick slider */
 
-.next-btn {
-    left: 10px;
-}
+            /* .next-btn {
+                left: 10px;
+            } */ /* Replaced by Slick slider */
 
-.slider-dots {
-    text-align: center;
-    margin-top: 20px;
-}
+            /* .slider-dots {
+                text-align: center;
+                margin-top: 20px;
+            } */ /* Replaced by Slick slider */
 
-.dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: #ccc;
-    border-radius: 50%;
-    margin: 0 5px;
-    cursor: pointer;
-}
+            /* .dot {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background: #ccc;
+                border-radius: 50%;
+                margin: 0 5px;
+                cursor: pointer;
+            } */ /* Replaced by Slick slider */
 
-.dot.active {
-    background: #007BFF;
-}
-
-@media (max-width: 768px) {
-    section {
-        padding: 20px;
-    }
-
-    .slide img {
-        max-height: 200px;
-    }
-}
+            /* .dot.active {
+                background: #007BFF;
+            } */ /* Replaced by Slick slider */
         }
+        /* Keyframes for animations (ensure they are LTR friendly if needed) */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft { /* Now used for RTL, so should be fadeInRight for LTR */
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight { /* New for LTR */
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
     </style>
 </head>
 <body>
-    <!-- شريط التنقل -->
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo"><img src="imgs/web_logo.png"/></a>
+            <a href="#" class="logo"><img src="imgs/web_logo.png" alt="Logo"/></a>
             <ul class="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#about">عنّي</a></li>
-                <li><a href="#portfolio">أعمالي</a></li>
-                <li><a href="#contact">اتصل بي</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#portfolio">My Works</a></li>
+                <li><a href="#contact">Contact Me</a></li>
             </ul>
             <button class="hamburger">
                 <i class="fas fa-bars"></i>
@@ -940,56 +1023,59 @@ form button {
         </div>
     </nav>
 
-    <!-- الرئيسية -->
     <section id="home" class="home-section">
+        <video class="video-bg" autoplay loop muted playsinline>
+            <source src="vids/video_1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="container">
             <div class="home-content">
-                <h1>مرحباً، أنا <span> عمرو رجب </span></h1>
-                <p>مصمم جرافيك مبدع</p>
-                <a href="#portfolio" class="btn">استعرض أعمالي</a>
-               
+                <h1>Hello, I'm <span><span id="element"></span></span></h1>
+                
+                <a href="#portfolio" class="btn">View My Works</a>
             </div>
-            
+            <!-- <div class="home-image">
+                <img src="imgs/your-image.png" alt="Amr Ragab">
+            </div> -->
         </div>
     </section>
 
-    <!-- عني -->
     <section id="about" class="about-section">
         <div class="container">
             <div class="section-title">
-                <h2>عن <span>نفسي</span></h2>
-                <p>تعرف على رحلتي في عالم التصميم الجرافيكي</p>
+                <h2>About <span>Me</span></h2>
+                <p>Learn about my journey in the world of graphic design.</p>
             </div>
-            
+
             <div class="about-content">
                 <div class="about-image">
-                    <img src="imgs/personal.png" alt="صورة عني">
+                    <img src="imgs/personal.png" alt="About Me Image">
                 </div>
                 <div class="about-info">
-                    <h3>مصمم جرافيك محترف</h3>
-                    <p>أمتلك خبرة سنة في تصميم الشعارات، الهوية البصرية، والمواد التسويقية. شغفي هو تحويل الأفكار إلى تصاميم بصرية مبهرة تلفت الأنظار.</p>
-                    
+                    <h3>Professional Graphic Designer</h3>
+                    <p>I have 2 years of experience in designing logos, visual identities, and marketing materials. My passion is to transform ideas into stunning visual designs that capture attention.</p>
+
                     <div class="personal-info">
                         <div>
-                            <span>الاسم:</span>
-                            <p> عمرو رجب </p>
+                            <span>Name:</span>
+                            <p>Amr Ragab</p>
                         </div>
                         <div>
-                            <span>البريد الإلكتروني:</span>
+                            <span>Email:</span>
                             <p>amrragab28090@gmail.com</p>
                         </div>
                         <div>
-                            <span>العمر:</span>
-                            <p>29 سنة</p>
+                            <span>Age:</span>
+                            <p>29 Years</p>
                         </div>
                         <div>
-                            <span>البلد:</span>
-                            <p> مصر </p>
+                            <span>Country:</span>
+                            <p>Egypt</p>
                         </div>
                     </div>
-                    
+
                     <div class="skills">
-                        <h4>مهاراتي</h4>
+                        <h4>My Skills</h4>
                         <div class="skill-item">
                             <span>Adobe Photoshop</span>
                             <div class="progress-bar">
@@ -1020,229 +1106,276 @@ form button {
         </div>
     </section>
 
-    <!-- أعمالي -->
     <section id="portfolio" class="portfolio-section">
         <div class="container">
             <div class="section-title">
-                <h2>معرض <span>أعمالي</span></h2>
-                <p>استعرض أحدث تصاميمي الإبداعية</p>
+                <h2>My <span>Works</span></h2>
+                <p>Browse my latest creative designs.</p>
             </div>
-            
+
             <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">الكل</button>
-                <button class="filter-btn" data-filter="logo">شعارات</button>
-                <button class="filter-btn" data-filter="branding">هوية بصرية</button>
-                <button class="filter-btn" data-filter="print">تصميم مطبوعات</button>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="logo">Logos</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="print">Print Design</button>
             </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="branding">
-                    <img src="imgs/international_flight.jpg" alt="poster    ">
+
+            <div class="portfolio-slider"> <div class="portfolio-item" data-category="branding">
+                    <img src="imgs/international_flight.jpg" alt="Social Media Poster">
                     <div class="portfolio-overlay">
-                        <h3>سوشيال ميديا</h3>
-                        <p>تصميم سوشيال ميديا لشركة شحن </p>
-                        <a href="https://www.behance.net/gallery/225543093/amr-business-card"><i class="fas fa-link"></i></a>
+                        <h3>Social Media Design</h3>
+                        <p>Social media design for a shipping company</p>
+                        <a href="https://www.behance.net/gallery/225543093/amr-business-card" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i></a>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="logo">
-                    <img src="imgs/card.jpg" alt="شعار ">
+                    <img src="imgs/card.jpg" alt="Logo Design">
                     <div class="portfolio-overlay">
-                        <h3>تصميم شعار</h3>
-                        <p>شعار لشركة تقنية مبتكرة</p>
-                        <a href="https://www.behance.net/gallery/225543093/amr-business-card"><i class="fas fa-link"></i></a>
+                        <h3>Logo Design</h3>
+                        <p>Logo for an innovative tech company</p>
+                        <a href="https://www.behance.net/gallery/225543093/amr-business-card" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="portfolio-item" data-category="branding">
-                    <img src="imgs/eid_mubarak_2.jpg" alt="هوية بصرية ">
+                    <img src="imgs/eid_mubarak_2.jpg" alt="Branding Identity">
                     <div class="portfolio-overlay">
-                        <h3>هوية بصرية</h3>
-                        <p>تصميم هوية كاملة لعلامة تجارية</p>
-                        <a href="https://www.behance.net/gallery/226366831/Eid-Mubarak-2"><i class="fas fa-link"></i></a>
+                        <h3>Visual Identity</h3>
+                        <p>Complete brand identity design</p>
+                        <a href="https://www.behance.net/gallery/226366831/Eid-Mubarak-2" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i></a>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="print">
-                    <img src="imgs/pizza_post_cover.jpg" alt="مطبوعات ">
+                    <img src="imgs/pizza_post_cover.jpg" alt="Brochure Design">
                     <div class="portfolio-overlay">
-                        <h3>تصميم بروشور</h3>
-                        <p>تصميم لمنتج البيتزا</p>
-                        <a href="https://www.behance.net/gallery/226163077/Pizza-social-post"><i class="fas fa-link"></i></a>
+                        <h3>Brochure Design</h3>
+                        <p>Design for a pizza product</p>
+                        <a href="https://www.behance.net/gallery/226163077/Pizza-social-post" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i></a>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="logo">
-                    <img src="imgs/pizza_post.jpg" alt="شعار ">
+                <div class="portfolio-item" data-category="logo"> <img src="imgs/pizza_post.jpg" alt="Brochure">
                     <div class="portfolio-overlay">
-                        <h3>تصميم بروشور</h3>
-                        <p>بروشور لمطعم عصري</p>
-                        <a href="https://www.behance.net/gallery/226163077/Pizza-social-post"><i class="fas fa-link"></i></a>
+                        <h3>Brochure Design</h3>
+                        <p>Brochure for a modern restaurant</p>
+                        <a href="https://www.behance.net/gallery/226163077/Pizza-social-post" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i></a>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="branding">
-                    <img src="imgs/Eid mubarak-Recovered.jpg" alt="هوية بصرية ">
+                    <img src="imgs/Eid mubarak-Recovered.jpg" alt="Social Media Eid">
                     <div class="portfolio-overlay">
-                        <h3> سوشيال ميديا</h3>
-                        <p>  عيد الأضحى المبارك </p>
-                        <a href="https://www.behance.net/gallery/225493567/Eid-Mubarak"><i class="fas fa-link"></i></a>
+                        <h3>Social Media</h3>
+                        <p>Eid Al-Adha Mubarak</p>
+                        <a href="https://www.behance.net/gallery/225493567/Eid-Mubarak" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i></a>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="print">
-                    <img src="imgs/rahma_groupe.jpg" alt="مطبوعات ">
+                    <img src="imgs/rahma_groupe.jpg" alt="Poster Design">
                     <div class="portfolio-overlay">
-                        <h3>تصميم بوستر</h3>
-                        <p>بوستر لشركة شحن  </p>
-                        <a href="#"><i class="fas fa-link"></i></a>
+                        <h3>Poster Design</h3>
+                        <p>Poster for a shipping company</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- اتصل بي -->
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-title">
-                <h2>اتصل <span>بي</span></h2>
-                <p>تواصلوا معي لمناقشة مشاريعكم الإبداعية</p>
+                <h2>Contact <span>Me</span></h2>
+                <p>Contact me to discuss your creative projects.</p>
             </div>
-            
+
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>دعونا نصنع شيئاً مميزاً</h3>
-                    <p>أنا هنا لتحويل رؤيتكم إلى تصاميم بصرية مذهلة. تواصلوا معي اليوم!</p>
-                    
+                    <h3>Let's Create Something Special</h3>
+                    <p>I'm here to turn your vision into stunning visual designs. Contact me today!</p>
+
                     <div class="contact-details">
                         <div>
                             <i class="fas fa-phone"></i>
                             <div>
-                                <span>الهاتف</span>
-                                <p>971504806937+</p>
+                                <span>Phone</span>
+                                <p>+971504806937</p>
                             </div>
                         </div>
                         <div>
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <span>البريد الإلكتروني</span>
+                                <span>Email</span>
                                 <p>amrragab28090@gmail.com</p>
                             </div>
                         </div>
                         <div>
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
-                                <span>العنوان</span>
-                                <p>الامارات العربية المتحدة  - أبوظبى</p>
+                                <span>Address</span>
+                                <p>UAE - Abu Dhabi</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="contact-form">
                     <form>
-                        <input type="text" placeholder="اسمك" required>
-                        <input type="email" placeholder="بريدك الإلكتروني" required>
-                        <input type="text" placeholder="الموضوع">
-                        <textarea placeholder="رسالتك" required></textarea>
-                        <button type="submit" class="btn">إرسال الرسالة</button>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject">
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- التذييل -->
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#"><i class="fab fa-dribbble"></i></a>
-                <a href="#"><i class="fab fa-behance"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-dribbble"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-behance"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest"></i></a>
             </div>
-            <p class="copyright">© 2025 جميع الحقوق محفوظة | عمرو رجب</p>
+            <p class="copyright">© 2025 All rights reserved | Amr Ragab</p>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
     <script>
-        // القائمة المتنقلة
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const navbar = document.querySelector('.navbar');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-
-        // إغلاق القائمة عند النقر على رابط
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        $(document).ready(function(){
+            // Initialize Slick Slider
+            $('.portfolio-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 3, // Show 3 items by default
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                arrows: true, // Show arrows
+                responsive: [
+                    {
+                        breakpoint: 992, // Medium devices (tablets, less than 992px)
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 768, // Small devices (landscape phones, less than 768px)
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            arrows: false // Optionally hide arrows on very small screens
+                        }
+                    }
+                ]
             });
-        });
 
-        // تأثير التمرير السلس
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
+            // Mobile Menu
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active')
+                    ? '<i class="fas fa-times"></i>'
+                    : '<i class="fas fa-bars"></i>';
             });
-        });
 
-        // تأثير التمرير لشريط التنقل
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // تصفية الأعمال
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-
-                const filter = this.getAttribute('data-filter');
-
-                portfolioItems.forEach(item => {
-                    const isVisible = filter === 'all' || item.getAttribute('data-category') === filter;
-                    item.style.display = isVisible ? 'block' : 'none';
-                    if (isVisible) {
-                        item.classList.add('visible');
-                    } else {
-                        item.classList.remove('visible');
+            // Close menu on link click
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
                     }
                 });
             });
-        });
 
-        // إضافة تأثيرات التمرير
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -20px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // Adjusted for navbar height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
-        }, observerOptions);
 
-        document.querySelectorAll('.section-title, .about-image, .about-info, .personal-info div, .skill-item, .portfolio-item, .contact-info, .contact-form, .contact-details div').forEach(element => {
-            observer.observe(element);
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Portfolio filter
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            // const portfolioItems = document.querySelectorAll('.portfolio-item'); // Not needed directly if using slider filtering
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filterValue = this.getAttribute('data-filter');
+
+                    // Filter Slick Slider
+                    if (filterValue === 'all') {
+                        $('.portfolio-slider').slick('slickUnfilter');
+                    } else {
+                        $('.portfolio-slider').slick('slickUnfilter').slick('slickFilter', function() {
+                            return $(this).data('category') === filterValue;
+                        });
+                    }
+                });
+            });
+
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -20px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // For skills, trigger animation when visible
+                        if (entry.target.classList.contains('skill-item')) {
+                            const progress = entry.target.querySelector('.progress');
+                            if (progress) {
+                                progress.style.width = progress.getAttribute('style').match(/width:\s*(\d+)%/)[1] + '%';
+                            }
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section-title, .about-image, .about-info, .personal-info div, .skill-item, .contact-info, .contact-form, .contact-details div').forEach(element => {
+                 // .portfolio-item is now handled by the slider, so direct observation might not be needed
+                observer.observe(element);
+            });
         });
     </script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+    var typed = new Typed('#element', {
+      strings: ['Amr Ragab', 'Creative Graphic Designer','Web Designer','UI/UX Designer'],
+      typeSpeed: 100,
+      loop :true,
+    });
+  </script>
 </body>
 </html>
