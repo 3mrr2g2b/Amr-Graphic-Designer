@@ -670,7 +670,31 @@
         }
 
         .contact-form .btn {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.6s forwards;
+        }
+
+        .contact-form button[type="submit"] {
             width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #dfe6e9;
+            border-radius: 6px;
+            font-family: 'Poppins', 'Noto Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            background: var(--primary-color);
+            color: #fff;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: none;
+        }
+
+        .contact-form button[type="submit"]:hover {
+            background: var(--secondary-color);
+            border-color: var(--primary-color);
+            color: #fff;
+            transform: scale(1.03);
         }
 
         /* Footer */
@@ -1218,13 +1242,22 @@
                 </div>
 
                 <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <input type="text" placeholder="Subject">
-                        <textarea placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+<!-- modify this form HTML and place wherever you want your form -->
+<form
+  action="https://formspree.io/f/mwpogglg"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
                 </div>
             </div>
         </div>
@@ -1233,11 +1266,10 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-dribbble"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-behance"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.facebook.com/3mrr2g2b/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.behance.net/amrragab287664" target="_blank" rel="noopener noreferrer"><i class="fab fa-behance"></i></a>
+                <a href="https://www.instagram.com/3mr_r2gab/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/3mrr2g2b/" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest"></i></a>
             </div>
             <p class="copyright">© 2025 All rights reserved | Amr Ragab</p>
         </div>
@@ -1245,7 +1277,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         $(document).ready(function(){
             // Initialize Slick Slider
@@ -1368,6 +1400,19 @@
                 observer.observe(element);
             });
         });
+
+        (function(){
+    emailjs.init("OVuvv3FLfcbUx2g40"); // Replace with your EmailJS user ID
+})();
+document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    emailjs.sendForm('service_cl6mk14', 'template_pie6hj9', this)
+        .then(function() {
+            alert('Message sent successfully!');
+        }, function(error) {
+            alert('Failed to send message. Please try again.');
+        });
+});
     </script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
